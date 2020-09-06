@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const home = () => {
+const Home = () => {
   return (
     <View>
       <Text>Home</Text>
@@ -9,6 +9,6 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
 
 const styles = StyleSheet.create({});
