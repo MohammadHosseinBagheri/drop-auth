@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 1000,
     backgroundColor: '#ECEFF1',
+    elevation: 0,
   },
   img: {width: 35, height: 35},
 });
