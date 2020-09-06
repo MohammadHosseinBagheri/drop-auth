@@ -18,7 +18,7 @@ const LoginContent = () => {
       </Item>
       <Item>
         <CustomInput name="lock-closed" placeholder="Password" />
-        <Icon name="eye" />
+        <Icon name="eye" style={styles.icon} />
       </Item>
       <ForgetPasswordButton />
       <LoginButton />
@@ -38,4 +38,5 @@ const styles = StyleSheet.create({
     marginTop: (height * 5) / 100,
   },
   loginMethodsContent: {flexDirection: 'row', justifyContent: 'center'},
+  icon: {color: '#7986CB'},
 });
