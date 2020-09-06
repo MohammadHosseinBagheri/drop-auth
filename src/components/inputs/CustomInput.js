@@ -1,11 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Icon, Input} from 'native-base';
-const CustomInput = ({name, placeholder,}) => {
+const CustomInput = ({name, placeholder, iconName}) => {
   return (
     <>
-      <Icon name={name} style={styles.icon} />
-      <Input placeholder={placeholder} />
+      <Icon name={iconName} style={styles.icon} />
+      <Input
+        secureTextEntry={name == 'phone' ? false : true}
+        keyboardType={name == 'phone' ? 'numeric' : 'default'}
+        placeholder={placeholder}
+      />
     </>
   );
 };

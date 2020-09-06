@@ -14,10 +14,14 @@ const LoginContent = () => {
   return (
     <View style={styles.inputsContainer}>
       <Item>
-        <CustomInput name={'call'} placeholder={'Phone'} />
+        <CustomInput iconName={'call'} name={'phone'} placeholder={'Phone'} />
       </Item>
       <Item style={{marginTop: 25}}>
-        <CustomInput name="lock-closed" placeholder="Password" />
+        <CustomInput
+          iconName={'lock-closed'}
+          name="password"
+          placeholder="Password"
+        />
         <Icon name="eye" style={styles.icon} />
       </Item>
       <ForgetPasswordButton />
