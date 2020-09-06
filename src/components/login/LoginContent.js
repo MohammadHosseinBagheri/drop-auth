@@ -16,7 +16,7 @@ const LoginContent = () => {
       <Item>
         <CustomInput name={'call'} placeholder={'Phone'} />
       </Item>
-      <Item>
+      <Item style={{marginTop: 25}}>
         <CustomInput name="lock-closed" placeholder="Password" />
         <Icon name="eye" style={styles.icon} />
       </Item>

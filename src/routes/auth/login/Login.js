@@ -1,9 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import HeaderTitle from '../../../components/login/HeaderTitle';
 import LoginContent from '../../../components/login/LoginContent';
 
 const {height} = Dimensions.get('window');
+const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
 
 const Login = () => {
   return (
@@ -11,7 +19,11 @@ const Login = () => {
       <HeaderTitle />
       <View style={styles.content}>
         <Text style={{fontSize: 18, fontWeight: 'bold'}}>Welcome</Text>
-        <LoginContent />
+        <KeyboardAvoidingView
+          keyboardVerticalOffset={keyboardVerticalOffset}
+          behavior="padding">
+          <LoginContent />
+        </KeyboardAvoidingView>
       </View>
     </View>
   );

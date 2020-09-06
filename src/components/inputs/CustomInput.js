@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Icon, Input} from 'native-base';
-const CustomInput = ({name, placeholder}) => {
+const CustomInput = ({name, placeholder,}) => {
   return (
     <>
       <Icon name={name} style={styles.icon} />
