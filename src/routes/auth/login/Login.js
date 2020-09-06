@@ -18,7 +18,7 @@ const Login = () => {
     <View style={styles.container}>
       <HeaderTitle />
       <View style={styles.content}>
-        <Text style={{fontSize: 18, fontWeight: 'bold'}}>Welcome</Text>
+        <Text style={styles.title}>Welcome</Text>
         <KeyboardAvoidingView
           keyboardVerticalOffset={keyboardVerticalOffset}
           behavior="padding">
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ECEFF1',
   },
-
+  title: {fontSize: 18, fontWeight: 'bold'},
   content: {
     flex: 0.8,
     backgroundColor: '#fff',
