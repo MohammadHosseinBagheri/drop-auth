@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,11 +9,19 @@ import {
 } from 'react-native';
 import HeaderTitle from '../../../components/login/HeaderTitle';
 import LoginContent from '../../../components/login/LoginContent';
+import AlertModal from '../../../components/alerts-modal/AlertModal';
 
 const {height} = Dimensions.get('window');
 const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
 
-const Login = () => {
+const Login = (props) => {
+  const {navigation} = props;
+
+  const alertModal = useRef();
+
+  const open = (text) => {
+    alertModal.current.open(text);
+  };
   return (
     <View style={styles.container}>
       <HeaderTitle />
@@ -22,9 +30,10 @@ const Login = () => {
         <KeyboardAvoidingView
           keyboardVerticalOffset={keyboardVerticalOffset}
           behavior="padding">
-          <LoginContent />
+          <LoginContent alertOpen={open} navigation={navigation} />
         </KeyboardAvoidingView>
       </View>
+      <AlertModal ref={alertModal} navigation={navigation} />
     </View>
   );
 };
