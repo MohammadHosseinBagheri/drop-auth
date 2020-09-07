@@ -14,17 +14,14 @@ const Auth = () => (
   </Stack.Navigator>
 );
 
-const HomeStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen component={Home} name="home" />
-  </Stack.Navigator>
-);
+const HomeStack = () => <Stack.Navigator></Stack.Navigator>;
 
 const Config = () => (
   <NavigationContainer>
     <Stack.Navigator headerMode={'none'}>
       <Stack.Screen component={Login} name="login" />
       <Stack.Screen component={Register} name="register" />
+      <Stack.Screen component={Home} name="home" />
     </Stack.Navigator>
   </NavigationContainer>
 );
