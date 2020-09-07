@@ -86,7 +86,7 @@ const LoginContent = (props) => {
       </Item>
       <ForgetPasswordButton />
       <LoginButton onPress={loginPress} />
-      <SignUpContent />
+      <SignUpContent navigation={navigation} />
       <View style={styles.loginMethodsContent}>
         <MethodsButton name="google" />
         <MethodsButton />
