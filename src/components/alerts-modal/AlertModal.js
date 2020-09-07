@@ -32,7 +32,7 @@ export class AlertModal extends Component {
           styles.modal,
           {
             backgroundColor:
-              this.state.text == 'success' ? 'seagreen' : '#d50000',
+              this.state.text == 'success' ? '#00E676' : '#d50000',
           },
         ]}>
         <View style={styles.content}>
