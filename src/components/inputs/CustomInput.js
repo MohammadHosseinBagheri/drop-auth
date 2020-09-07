@@ -1,13 +1,14 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Icon, Input} from 'native-base';
-const CustomInput = ({name, placeholder, iconName}) => {
+const CustomInput = ({name, placeholder, iconName, handleChange}) => {
   return (
     <>
       <Icon name={iconName} style={styles.icon} />
       <Input
-        secureTextEntry={name == 'phone' ? false : true}
-        keyboardType={name == 'phone' ? 'numeric' : 'default'}
+        onChangeText={(text) => handleChange(text, name)}
+        secureTextEntry={name == 'email' ? false : true}
+        keyboardType={name == 'email' ? 'email-address' : 'default'}
         placeholder={placeholder}
       />
     </>
