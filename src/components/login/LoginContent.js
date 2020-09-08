@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, Dimensions, View} from 'react-native';
-import {Item, Icon} from 'native-base';
+import {StyleSheet, Dimensions, View, TouchableOpacity} from 'react-native';
+import {Item, Icon, Button} from 'native-base';
 import {connect} from 'react-redux';
 
 import ForgetPasswordButton from './ForgetPasswordButton';
@@ -16,6 +16,7 @@ const LoginContent = (props) => {
   const {alertOpen, userLogin, navigation} = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [secure, setSecure] = useState(false);
 
   const handleChange = (text, name) => {
     if (name == 'email') {
@@ -69,6 +70,7 @@ const LoginContent = (props) => {
     <View style={styles.inputsContainer}>
       <Item>
         <CustomInput
+          secure={secure}
           handleChange={handleChange}
           iconName={'call'}
           name={'email'}
@@ -77,12 +79,17 @@ const LoginContent = (props) => {
       </Item>
       <Item style={{marginTop: 25}}>
         <CustomInput
+          secure={secure}
           handleChange={handleChange}
           iconName={'lock-closed'}
           name="password"
           placeholder="Password"
         />
-        <Icon name="eye" style={styles.icon} />
+        <TouchableOpacity
+          style={{zIndex: 20}}
+          onPress={() => setSecure(!secure)}>
+          <Icon name="eye" style={styles.icon} />
+        </TouchableOpacity>
       </Item>
       <ForgetPasswordButton />
       <LoginButton onPress={loginPress} />
