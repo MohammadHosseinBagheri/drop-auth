@@ -41,8 +41,8 @@ const LoginContent = (props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: 'eve.holt@reqres.in',
-        password: 'cityslicka',
+        email:email,
+        password: password,
       }),
     });
     const responseJson = await response.json();
