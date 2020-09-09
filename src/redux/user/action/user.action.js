@@ -1,8 +1,8 @@
 const {USER} = require('../../../constant');
 
-export const authUser = (token) => {
+export const authUser = (data) => {
   return {
     type: USER,
-    payload: token,
+    payload: data,
   };
 };
