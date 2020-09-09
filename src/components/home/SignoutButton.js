@@ -21,7 +21,7 @@ const SignoutButton = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signout: () => dispatch(authUser('')),
+    signout: () => dispatch(authUser({email: '', password: '', token: ''})),
   };
 };
 
