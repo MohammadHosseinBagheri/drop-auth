@@ -41,7 +41,7 @@ const LoginContent = (props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email:email,
+        email: email,
         password: password,
       }),
     });
@@ -66,10 +66,14 @@ const LoginContent = (props) => {
     const data = await fetchLoginData();
     const error = await data.error;
     const token = await data.token;
-
+    const payload = {
+      email: email,
+      password: password,
+      token: token,
+    };
     //store in redux state
     if (token) {
-      await userLogin(token);
+      await userLogin(payload);
       await alertOpen('success');
       return;
     }
