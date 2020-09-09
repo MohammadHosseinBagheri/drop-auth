@@ -1,18 +1,23 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 
-const HeaderContent = () => {
+const HeaderContent = (props) => {
+  const {first_name, last_name, avatar} = props.information;
+  console.log(props)
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
           style={styles.img}
           resizeMode={'stretch'}
-          source={require('../../assets/img/logo.jpg')}
+          source={{uri: avatar}}
         />
       </View>
       <View style={{marginBottom: 15}}>
-        <Text style={styles.name}>Cauan Tomaz</Text>
+        <Text style={styles.name}>
+          {first_name + ' '}
+          {last_name}{' '}
+        </Text>
         <Text style={styles.title}>Design UI/UX</Text>
       </View>
     </View>
