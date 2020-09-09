@@ -8,41 +8,54 @@ import {
 } from 'react-native';
 import {Item, Icon, Button} from 'native-base';
 import {connect} from 'react-redux';
-
-import ForgetPasswordButton from './ForgetPasswordButton';
-import LoginButton from './LoginButton';
-import SignUpContent from './SignUpContent';
-import MethodsButton from './MethodsButton';
-import CustomInput from '../inputs/CustomInput';
 import {authUser} from '../../redux/user/action/user.action';
+import CustomInput from '../inputs/CustomInput';
+import RegisterButton from './RegisterButton';
+import SigninButton from './SigninButton';
 
 const {height} = Dimensions.get('window');
 
 const LoginContent = (props) => {
   const {alertOpen, userLogin, navigation} = props;
-  const [email, setEmail] = useState('');
+
+  const [iName, setIName] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
+  const [email, setEmail] = useState('');
   const [secure, setSecure] = useState(true);
 
   const handleChange = (text, name) => {
-    if (name == 'email') {
-      setEmail(text);
+    if (name == 'name') {
+      setIName(text);
       return;
     }
-    setPassword(text);
+    if (name == 'phone') {
+      setPhone(text);
+      return;
+    }
+    if (name == 'password') {
+      setPassword(text);
+      return;
+    }
+    if (name == 'confirm') {
+      setConfirm(text);
+      return;
+    }
+    setEmail(text);
     return;
   };
 
   //fetching data to server
   const fetchLoginData = async () => {
-    const response = await fetch('https://reqres.in/api/login', {
+    const response = await fetch('https://reqres.in/api/register', {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: 'eve.holt@reqres.in',
-        password: 'cityslicka',
+        password: 'pistol',
       }),
     });
     const responseJson = await response.json();
@@ -51,7 +64,13 @@ const LoginContent = (props) => {
 
   //auth data
   const loginPress = async () => {
-    if (email == '' || password == '') {
+    if (
+      iName == '' ||
+      phone == '' ||
+      confirm == '' ||
+      email == '' ||
+      password == ''
+    ) {
       alertOpen('Check the inputs');
       return;
     }
@@ -61,6 +80,10 @@ const LoginContent = (props) => {
     }
     if (password.length < 8) {
       alertOpen('Minimum length of password is 8');
+      return;
+    }
+    if (confirm != password) {
+      alertOpen('Check password');
       return;
     }
     const data = await fetchLoginData();
@@ -82,22 +105,31 @@ const LoginContent = (props) => {
 
   return (
     <ScrollView style={styles.inputsContainer}>
-      <Item>
+      <Item style={{marginBottom: 13}}>
+        <CustomInput
+          secure={secure}
+          handleChange={handleChange}
+          iconName={'person-outline'}
+          name={'name'}
+          placeholder={'Name'}
+        />
+      </Item>
+      <Item style={{marginBottom: 13}}>
         <CustomInput
           secure={secure}
           handleChange={handleChange}
           iconName={'call'}
-          name={'email'}
-          placeholder={'Email'}
+          name={'phone'}
+          placeholder={'Phone'}
         />
       </Item>
-      <Item style={{marginTop: 25}}>
+      <Item style={{marginBottom: 13}}>
         <CustomInput
           secure={secure}
           handleChange={handleChange}
-          iconName={'lock-closed'}
-          name="password"
-          placeholder="Password"
+          iconName={'lock-closed-outline'}
+          name={'password'}
+          placeholder={'Password'}
         />
         <TouchableOpacity
           style={{zIndex: 20}}
@@ -105,13 +137,31 @@ const LoginContent = (props) => {
           <Icon name="eye" style={styles.icon} />
         </TouchableOpacity>
       </Item>
-      <ForgetPasswordButton />
-      <LoginButton onPress={loginPress} />
-      <SignUpContent navigation={navigation} />
-      <View style={styles.loginMethodsContent}>
-        <MethodsButton name="google" />
-        <MethodsButton />
-      </View>
+      <Item style={{marginBottom: 13}}>
+        <CustomInput
+          secure={secure}
+          handleChange={handleChange}
+          iconName={'lock-closed-outline'}
+          name={'confirm'}
+          placeholder={'Confirm Password'}
+        />
+        <TouchableOpacity
+          style={{zIndex: 20}}
+          onPress={() => setSecure(!secure)}>
+          <Icon name="eye" style={styles.icon} />
+        </TouchableOpacity>
+      </Item>
+      <Item>
+        <CustomInput
+          secure={secure}
+          handleChange={handleChange}
+          iconName={'mail'}
+          name={'email'}
+          placeholder={'Email'}
+        />
+      </Item>
+      <RegisterButton onPress={loginPress} />
+      <SigninButton navigation={navigation} />
     </ScrollView>
   );
 };

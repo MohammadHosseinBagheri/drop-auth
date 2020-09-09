@@ -7,10 +7,11 @@ const CustomInput = (props) => {
     <>
       <Icon name={iconName} style={styles.icon} />
       <Input
+        maxLength={name != 'email' ? 32 : name == 'phone' ? 11 : 70}
+        style={{fontSize: 13}}
         onChangeText={(text) => handleChange(text, name)}
         secureTextEntry={
-          (name == 'email' ? false : true) &&
-          (name != 'email' && secure ? true : false)
+          (name == 'password' || name == 'confirm') && secure ? true : false
         }
         keyboardType={name == 'email' ? 'email-address' : 'default'}
         placeholder={placeholder}
@@ -22,5 +23,5 @@ const CustomInput = (props) => {
 export default CustomInput;
 
 const styles = StyleSheet.create({
-  icon: {color: '#7986CB'},
+  icon: {color: '#1976D2'},
 });

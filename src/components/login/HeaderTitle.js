@@ -4,7 +4,10 @@ import {StyleSheet, Text, View} from 'react-native';
 const HeaderTitle = () => {
   return (
     <View style={styles.logo}>
-      <Text style={{textAlign: 'center'}}>jatus</Text>
+      <Text
+        style={styles.text}>
+        jatus
+      </Text>
     </View>
   );
 };
@@ -17,4 +20,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text:{
+    textAlign: 'center',
+    fontSize: 40,
+    textTransform: 'uppercase',
+    color: '#1976D2',
+    fontWeight: 'bold',
+  }
 });

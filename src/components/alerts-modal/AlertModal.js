@@ -11,18 +11,22 @@ export class AlertModal extends Component {
   }
   render() {
     const {navigation} = this.props;
-    this.open = async (text) => {
-      this.setState({ text: text });
+    this.open = async (text, nextRoute) => {
+      this.setState({text: text});
       await this.refs.alertModal.open();
       setTimeout(async () => {
-            await this.close();
-            if (this.state.text == 'success') {
-                this.homeScreen();
-            }
-        }, 2000);
+        await this.close();
+        if (this.state.text == 'success') {
+          if (nextRoute == 'home') this.homeScreen();
+          else {
+            this.loginScreen();
+          }
+        }
+      }, 2000);
     };
     this.close = () => this.refs.alertModal.close();
     this.homeScreen = () => navigation.replace('home');
+    this.loginScreen = () => navigation.replace('login');
     return (
       <Modal
         ref={'alertModal'}

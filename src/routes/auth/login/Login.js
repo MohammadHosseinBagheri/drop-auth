@@ -12,7 +12,6 @@ import LoginContent from '../../../components/login/LoginContent';
 import AlertModal from '../../../components/alerts-modal/AlertModal';
 
 const {height} = Dimensions.get('window');
-const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
 
 const Login = (props) => {
   const {navigation} = props;
@@ -20,16 +19,14 @@ const Login = (props) => {
   const alertModal = useRef();
 
   const open = (text) => {
-    alertModal.current.open(text);
+    alertModal.current.open(text, 'home');
   };
   return (
     <View style={styles.container}>
       <HeaderTitle />
       <View style={styles.content}>
         <Text style={styles.title}>Welcome</Text>
-        <KeyboardAvoidingView
-          keyboardVerticalOffset={keyboardVerticalOffset}
-          behavior="padding">
+        <KeyboardAvoidingView keyboardVerticalOffset={-100} behavior="padding">
           <LoginContent alertOpen={open} navigation={navigation} />
         </KeyboardAvoidingView>
       </View>
