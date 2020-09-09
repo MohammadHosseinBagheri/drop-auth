@@ -6,6 +6,7 @@ import {
   Dimensions,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
 } from 'react-native';
 import HeaderTitle from '../../../components/login/HeaderTitle';
 import LoginContent from '../../../components/login/LoginContent';
@@ -24,12 +25,12 @@ const Login = (props) => {
   return (
     <View style={styles.container}>
       <HeaderTitle />
-      <View style={styles.content}>
+      <ScrollView style={styles.content}>
         <Text style={styles.title}>Welcome</Text>
         <KeyboardAvoidingView keyboardVerticalOffset={-100} behavior="padding">
           <LoginContent alertOpen={open} navigation={navigation} />
         </KeyboardAvoidingView>
-      </View>
+      </ScrollView>
       <AlertModal ref={alertModal} navigation={navigation} />
     </View>
   );
